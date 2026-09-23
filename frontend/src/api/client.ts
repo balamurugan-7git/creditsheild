@@ -27,10 +27,27 @@ export function clearStoredToken(): void {
   localStorage.removeItem(TOKEN_KEY);
 }
 
-// Support VITE_API_URL for production deployments (e.g. on Render)
-const apiBase = import.meta.env.VITE_API_URL
-  ? `${(import.meta.env.VITE_API_URL as string).replace(/\/+$/, '')}/api`
-  : '/api';
+// Support VITE_API_URL and dynamic Render hostname resolution
+function getBaseUrl(): string {
+  const envUrl = (import.meta.env.VITE_API_URL as string | undefined)?.trim();
+
+  if (envUrl && envUrl !== 'credishield-api') {
+    const withProtocol = envUrl.startsWith('http://') || envUrl.startsWith('https://')
+      ? envUrl
+      : `https://${envUrl}`;
+    return `${withProtocol.replace(/\/+$/, '')}/api`;
+  }
+
+  // Automatic fallback when hosted on Render
+  if (typeof window !== 'undefined' && window.location.hostname.includes('onrender.com')) {
+    return 'https://credishield-api.onrender.com/api';
+  }
+
+  // Local development proxy fallback
+  return '/api';
+}
+
+const apiBase = getBaseUrl();
 
 /** Shared Axios instance pre-configured for the CrediShield API */
 const apiClient: AxiosInstance = axios.create({

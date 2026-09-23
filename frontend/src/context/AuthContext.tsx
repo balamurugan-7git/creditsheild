@@ -53,14 +53,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
   // On mount: if there's a stored token, verify it by fetching /api/auth/me
   useEffect(() => {
     const token = getStoredToken();
-    if (!token) {
+    if (!token || token === 'undefined' || token === 'null') {
+      clearStoredToken();
       setIsLoading(false);
       return;
     }
 
     getCurrentUser()
       .then((fetchedUser) => {
-        setUser(fetchedUser);
+        if (!fetchedUser || typeof fetchedUser !== 'object' || !fetchedUser.email) {
+          clearStoredToken();
+          setUser(null);
+        } else {
+          setUser(fetchedUser);
+        }
       })
       .catch(() => {
         // Token is invalid or expired – clear it
@@ -74,8 +80,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const login = useCallback(async (email: string, password: string): Promise<void> => {
     const tokens = await loginUser(email, password);
+    if (!tokens || !tokens.access_token) {
+      throw new Error('Authentication failed: No access token received from API.');
+    }
     setStoredToken(tokens.access_token);
     const fetchedUser = await getCurrentUser();
+    if (!fetchedUser || typeof fetchedUser !== 'object' || !fetchedUser.email) {
+      throw new Error('Failed to retrieve user profile.');
+    }
     setUser(fetchedUser);
   }, []);
 

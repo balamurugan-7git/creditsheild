@@ -56,7 +56,7 @@ export default function ApplicantDashboard() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <div>
             <h1 className="text-2xl font-bold text-slate-900">
-              Welcome back, {user?.full_name || user?.email.split('@')[0]}
+              Welcome back, {user?.full_name || user?.email?.split('@')[0] || 'Applicant'}
             </h1>
             <p className="text-sm text-slate-500 mt-1">
               Apply for a loan with instant, transparent AI-driven credit scoring.

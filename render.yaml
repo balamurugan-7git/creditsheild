@@ -20,7 +20,7 @@ services:
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
         value: "60"
       - key: CORS_ORIGINS
-        value: "*"
+        value: "http://localhost:5173,https://credishield-web.onrender.com"
       - key: RATE_LIMIT
         value: "60/minute"
       - key: MODEL_PATH
@@ -44,7 +44,4 @@ services:
         destination: "/index.html"
     envVars:
       - key: VITE_API_URL
-        fromService:
-          type: web
-          name: credishield-api
-          property: host
+        value: "https://credishield-api.onrender.com"
