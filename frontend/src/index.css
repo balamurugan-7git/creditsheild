@@ -1,0 +1,63 @@
+/* ============================================================
+ * CrediShield AI – Global Styles
+ * Base Tailwind directives + CSS custom properties
+ * ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Brand CSS Custom Properties ---- */
+:root {
+  --color-primary:   #2563eb; /* blue-600  */
+  --color-danger:    #dc2626; /* red-600   */
+  --color-success:   #16a34a; /* green-600 */
+  --color-warning:   #eab308; /* yellow-500 */
+
+  --color-primary-light:  #dbeafe; /* blue-100  */
+  --color-danger-light:   #fee2e2; /* red-100   */
+  --color-success-light:  #dcfce7; /* green-100 */
+  --color-warning-light:  #fef9c3; /* yellow-100 */
+
+  --radius-card: 0.75rem;
+  --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* ---- Smooth scroll ---- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---- Default body ---- */
+body {
+  @apply bg-gray-50 text-gray-900 font-sans antialiased;
+  min-height: 100vh;
+}
+
+/* ---- Focus-visible ring ---- */
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary-500 ring-offset-2;
+}
+
+/* ---- Utility layer extensions ---- */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ---- Recharts tooltip override so it matches our design ---- */
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+/* ---- Step progress bar animation ---- */
+.step-complete {
+  @apply bg-primary-600 text-white border-primary-600;
+}
+.step-active {
+  @apply border-primary-600 text-primary-600;
+}
+.step-inactive {
+  @apply border-gray-300 text-gray-400;
+}

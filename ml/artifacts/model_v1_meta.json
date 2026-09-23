@@ -1,0 +1,55 @@
+{
+  "model_version": "v1.0.0",
+  "trained_at": "2026-09-24T01:45:51.826243",
+  "training_metrics": {
+    "roc_auc": 0.9820529968037145
+  },
+  "threshold_policy": {
+    "low_threshold": 0.01,
+    "high_threshold": 0.39,
+    "cost_fn_ratio": 5.0,
+    "total_cost": 127.0,
+    "metrics_at_thresholds": {
+      "at_low_threshold": {
+        "precision": 0.4947916666666667,
+        "recall": 0.9947643979057592,
+        "f1": 0.6608695652173913
+      },
+      "at_high_threshold": {
+        "precision": 0.6458333333333334,
+        "recall": 0.9738219895287958,
+        "f1": 0.7766179540709812
+      }
+    }
+  },
+  "categorical_features": [
+    "CODE_GENDER",
+    "FLAG_OWN_CAR",
+    "FLAG_OWN_REALTY",
+    "NAME_INCOME_TYPE",
+    "NAME_EDUCATION_TYPE",
+    "NAME_FAMILY_STATUS",
+    "NAME_HOUSING_TYPE",
+    "NAME_CONTRACT_TYPE",
+    "ORGANIZATION_TYPE",
+    "OCCUPATION_TYPE"
+  ],
+  "numerical_features": [
+    "CNT_CHILDREN",
+    "AMT_INCOME_TOTAL",
+    "AMT_CREDIT",
+    "AMT_ANNUITY",
+    "AMT_GOODS_PRICE",
+    "DAYS_BIRTH",
+    "DAYS_EMPLOYED",
+    "DAYS_REGISTRATION",
+    "DAYS_ID_PUBLISH",
+    "EXT_SOURCE_1",
+    "EXT_SOURCE_2",
+    "EXT_SOURCE_3",
+    "OWN_CAR_AGE",
+    "CNT_FAM_MEMBERS"
+  ],
+  "feature_names_count": 30,
+  "joblib_file": "model_v1.joblib"
+}

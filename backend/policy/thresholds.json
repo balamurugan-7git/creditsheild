@@ -1,0 +1,18 @@
+{
+  "low_threshold": 0.01,
+  "high_threshold": 0.39,
+  "cost_fn_ratio": 5.0,
+  "total_cost": 127.0,
+  "metrics_at_thresholds": {
+    "at_low_threshold": {
+      "precision": 0.4947916666666667,
+      "recall": 0.9947643979057592,
+      "f1": 0.6608695652173913
+    },
+    "at_high_threshold": {
+      "precision": 0.6458333333333334,
+      "recall": 0.9738219895287958,
+      "f1": 0.7766179540709812
+    }
+  }
+}
