@@ -2,7 +2,7 @@
 app/database.py
 ---------------
 SQLAlchemy engine, session factory, declarative base, and FastAPI dependency.
-Supports both SQLite (development) and PostgreSQL (production) via DATABASE_URL.
+Supports MySQL (production/development) and SQLite via DATABASE_URL.
 """
 
 from sqlalchemy import create_engine, text
